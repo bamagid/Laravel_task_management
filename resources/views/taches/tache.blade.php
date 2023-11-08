@@ -23,6 +23,7 @@
                 <p class="card-text">Statut :  {{ $tache->is_termine? 'Terminée' : 'En cours' }}</p>
                 <a href="/taches/supprimer/{{$tache->id}}" class="card-link btn btn-danger danger">supprimer</a>
                 <a href="/taches/{{$tache->id}}/details" class="card-link btn btn-primary primary">details</a>
+                <a href="/taches/modifier/{{$tache->id}}" class="card-link btn btn-info info">Modfier</a>
             </div>
         </div>
     </div>

@@ -54,4 +54,30 @@ class TacheController extends Controller
         return redirect('/tache');
       }
       }
+      public function modifier(Request $req){
+        $tache = Tache::findOrFail($req->id);
+        return view('taches.modifier',["tache"=>$tache]);
+      }
+      public function enregistrer(Request $req){
+        $taches= Tache::findOrFail($req->id);
+      //on aliment notre objet crée
+      $taches->nom_tache = $req->nom;
+      $taches->description_tache = $req->description;
+      $taches->date_echeance = $req->date;
+      $taches->priorite = $req->priorite;
+      $taches->is_termine=$req->termine;
+      //on  gére la priorité
+      if ($req->termine) {
+        $taches->is_termine = 1;
+      }else{
+        $taches->is_termine = 0;
+      }
+      //si la modification s'est bien effectué, alors on redirige vers la liste des taches
+
+      if ($taches->update()) {
+        return redirect('/tache');
+      }else {
+        return back()->with('status',"La modification a echoué veuillez reessayer svp!");
+      }
+      }
 }

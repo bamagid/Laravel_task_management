@@ -23,3 +23,5 @@ Route::get('/tache/nouveau', [TacheController::class,'create']);
 Route::post('/tache/save', [TacheController::class,'save']);
 Route::get('/taches/terminer/{id}', [TacheController::class, "terminer"]);
 Route::get('/taches/supprimer/{id}', [TacheController::class, "supprimer"]);
+Route::get('/taches/modifier/{id}', [TacheController::class,'modifier']);
+Route::post('/taches/enregistrer/{id}', [TacheController::class,'enregistrer']);
